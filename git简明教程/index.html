@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Git简明教程 - 我的全新 Hugo 网站</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="Git简明教程" />
+<meta property="og:description" content="Git简明教程 前言 这不是开发手册，不是原理讲解。只会告诉你，这个功能是什么。 整体概述 Git 是一个版本控制系统，它是分布式的。 未追踪区：初始化之后" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bingyan.wang/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" /><meta property="og:image" content="https://bingyan.wang/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-11T00:10:54+08:00" />
+<meta property="article:modified_time" content="2022-05-11T00:10:54+08:00" /><meta property="og:site_name" content="我的全新 Hugo 网站" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://bingyan.wang/logo.png"/>
+
+<meta name="twitter:title" content="Git简明教程"/>
+<meta name="twitter:description" content="Git简明教程 前言 这不是开发手册，不是原理讲解。只会告诉你，这个功能是什么。 整体概述 Git 是一个版本控制系统，它是分布式的。 未追踪区：初始化之后"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://bingyan.wang/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" /><link rel="prev" href="https://bingyan.wang/first_post/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Git简明教程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/bingyan.wang\/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B\/"
+        },"genre": "posts","wordcount":  2589 ,
+        "url": "https:\/\/bingyan.wang\/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B\/","datePublished": "2022-05-11T00:10:54+08:00","dateModified": "2022-05-11T00:10:54+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="我的全新 Hugo 网站"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="我的全新 Hugo 网站"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Git简明教程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-11">2022-05-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2589 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#整体概述">整体概述</a></li>
+    <li><a href="#安装与配置">安装与配置</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#安装">安装</a></li>
+            <li><a href="#配置">配置</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#一版本管理">一、版本管理</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#开始追踪">开始追踪</a></li>
+            <li><a href="#忽略追踪">忽略追踪</a></li>
+            <li><a href="#记录修改">记录修改</a></li>
+            <li><a href="#查看修改">查看修改</a></li>
+            <li><a href="#查看版本历史">查看版本历史</a></li>
+            <li><a href="#恢复到历史版本">恢复到历史版本</a></li>
+            <li><a href="#删除文件">删除文件</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#二将版本号打上标签">二、将版本号打上标签</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#打标签">打标签</a></li>
+            <li><a href="#查看标签">查看标签</a></li>
+            <li><a href="#删标签">删标签</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#三多分支版本管理">三、多分支版本管理</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#分支的增删查并">分支的增删查并</a></li>
+            <li><a href="#分支管理一般策略">分支管理一般策略</a></li>
+            <li><a href="#bug分支与cherry-pick">bug分支与cherry-pick</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#四暂存管理">四、暂存管理</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#查看保存的暂存区内容">查看保存的暂存区内容</a></li>
+            <li><a href="#保存暂存区">保存暂存区</a></li>
+            <li><a href="#提取暂存区">提取暂存区</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#五-同步远程库">五 、同步远程库</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#远程账号设置">远程账号设置</a></li>
+            <li><a href="#远程创建空库">远程创建空库</a></li>
+            <li><a href="#链接本地远程库">链接本地远程库</a></li>
+            <li><a href="#上传本地库">上传本地库</a></li>
+            <li><a href="#上传合并本地库到远程">上传合并本地库到远程</a></li>
+            <li><a href="#下载远程库">下载远程库</a></li>
+            <li><a href="#下载合并远程库到本地">下载合并远程库到本地</a></li>
+            <li><a href="#查看本地链接的远程库">查看本地链接的远程库</a></li>
+            <li><a href="#删除本地连接的远程库">删除本地连接的远程库</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#六其他">六、其他</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#git-rebase">git rebase</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="git简明教程">Git简明教程</h1>
+<h2 id="前言">前言</h2>
+<p>这不是开发手册，不是原理讲解。只会告诉你，这个功能是什么。</p>
+<h2 id="整体概述">整体概述</h2>
+<p>Git 是一个版本控制系统，它是分布式的。</p>
+<p>未追踪区：初始化之后，还么有进入追踪区</p>
+<p>工作区：所有的修改，都会被自动记录在工作区当中，可以撤销修改，可以查询修改内容，可以删除刚才修改的内容。</p>
+<p>暂留区：添加到追踪区之后，所有记录开始 手动更新到这里</p>
+<h2 id="安装与配置">安装与配置</h2>
+<h4 id="安装">安装</h4>
+<p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreffer">https://git-scm.com/downloads</a></p>
+<h4 id="配置">配置</h4>
+<p>git config &ndash;global user.name &ldquo;你的名字&rdquo;</p>
+<p>git config &ndash;global user.mail &ldquo;你的邮箱&rdquo;</p>
+<p>&ndash;global ：此时，本机子上所有的 git 就会用这个信息</p>
+<p>gitconfig &ndash;global color.ui true</p>
+<p>别名：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ git config --global alias.st status
+</span></span><span class="line"><span class="cl">$ git config --global alias.co checkout
+</span></span><span class="line"><span class="cl">$ git config --global alias.ci commit
+</span></span><span class="line"><span class="cl">$ git config --global alias.br branch
+</span></span><span class="line"><span class="cl">git config --global alias.lg &#34;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置文件在：.git/config 中，可以直接修改</p>
+<h2 id="一版本管理">一、版本管理</h2>
+<h4 id="开始追踪">开始追踪</h4>
+<p>开始追踪：将文件设置成需要版本管理的文件夹时，文件夹中的文件还未进行追踪。只有当加入（git add）追踪之后，所有的文件才开始进行追踪。</p>
+<p>自动记录：git add 之后，所有的文件修改的内容，将会自动保存在 工作区（working directory )</p>
+<p>保存记录：任意时候，再做一次git add，就会将工作区的内容清空，并且保存到暂存区(stage 或 index)</p>
+<p>保存版本：git commit 操作可以将修改的内容 记录到版本库中。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="F:%5ctouzi%5c%e6%80%bb%e6%b1%87%5cgit%e7%ae%80%e6%98%8e%e6%95%99%e7%a8%8b1.jpg"
+        data-srcset="F:%5ctouzi%5c%e6%80%bb%e6%b1%87%5cgit%e7%ae%80%e6%98%8e%e6%95%99%e7%a8%8b1.jpg, F:%5ctouzi%5c%e6%80%bb%e6%b1%87%5cgit%e7%ae%80%e6%98%8e%e6%95%99%e7%a8%8b1.jpg 1.5x, F:%5ctouzi%5c%e6%80%bb%e6%b1%87%5cgit%e7%ae%80%e6%98%8e%e6%95%99%e7%a8%8b1.jpg 2x"
+        data-sizes="auto"
+        alt="F:\touzi\总汇\git简明教程1.jpg"
+        title="git简明教程1" /></p>
+<h4 id="忽略追踪">忽略追踪</h4>
+<p>创建.gitignore文件，将要忽略追踪的文件名填进去</p>
+<p>通配符：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 排除所有.开头的隐藏文件:
+</span></span><span class="line"><span class="cl">.*
+</span></span><span class="line"><span class="cl"># 排除所有.class文件:
+</span></span><span class="line"><span class="cl">*.class
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 不排除.gitignore和App.class:
+</span></span><span class="line"><span class="cl">!.gitignore
+</span></span><span class="line"><span class="cl">!App.class
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="记录修改">记录修改</h4>
+<p>0	指定文件夹，进入版本管理： git init</p>
+<p>1	将需要追踪管理的文件，加入追踪 :</p>
+<p>​	git add 文件名</p>
+<p>​	<code>参考操作：git add . （全部加入追踪）</code></p>
+<p>​	<code>创建.gitignore文件，将要忽略追踪的文件名填进去</code></p>
+<p>2	当加入追踪之后，所有的文件的增、删、改都会在工作区（working directory )中进行记录</p>
+<p>3	修改完成后，可将修改的记录，提交到暂存区(stage或index)</p>
+<p>​	<code>git add 文件名</code></p>
+<p>​	<code>git add .</code></p>
+<p>4	根据实际情况，随时可以将暂存区的修改进行保存</p>
+<p>​	<code>git commit -m “备注内容”</code></p>
+<p>​	<code>或者不进行暂存，直接保存修改记录：git commit -am “”</code></p>
+<h4 id="查看修改">查看修改</h4>
+<p>1	查看整个文件夹下面的修改情况：<code>git status</code></p>
+<p>2	查看工作区与暂存区的差别：<code>git diff</code></p>
+<p>3	查看暂存区与仓库中最后一次保存的修改记录的差别： <code>git diff --staged</code></p>
+<p>4	查看工作区与仓库中最后一次保存修改记录的差别：<code>git diff HEAD</code></p>
+<h4 id="查看版本历史">查看版本历史</h4>
+<p>1	git log</p>
+<p>2	git reflog 查看所有记录</p>
+<p>3	git log &ndash;pretty=oneline &ndash;abbrev-commit 好看的格式</p>
+<h4 id="恢复到历史版本">恢复到历史版本</h4>
+<p>1	将暂存区的内容恢复到工作区（删除工作区的内容）git checkout &ndash; 文件名</p>
+<p>2	恢复版本库的内容到工作区 git reset HEAD &ndash; 文件名</p>
+<p>3	恢复版本库中的指定内容到工作区	<code>git reset --hard 版本号</code></p>
+<p>​		&ndash;hard：硬回滚。工作区、暂存区全部替换成指定的版本。</p>
+<p>​		&ndash;mixed：默认。覆盖暂存区，不覆盖工作区。</p>
+<p>​		&ndash;soft：软回滚。工作区、暂存区不覆盖。</p>
+<p>查看版本库中的保存记录： <code>git reflog</code></p>
+<h4 id="删除文件">删除文件</h4>
+<p>当文件保存的版本库之后，就不用删除掉的文件都可以从版本库中恢复</p>
+<p><code>git rm 文件</code></p>
+<h2 id="二将版本号打上标签">二、将版本号打上标签</h2>
+<p>总是寻找版本id，是不便于管理的，所以加上标签。就可以任意跳跃到相应记录了。</p>
+<h4 id="打标签">打标签</h4>
+<p>1 给当前版本号打标签：git tag 标签名</p>
+<p>2 给历史版本号打标签：git tag 标签名 版本短号</p>
+<p>版本短号：<code>git log --pretty=oneline --abbrev-commit</code></p>
+<h4 id="查看标签">查看标签</h4>
+<p>查看所有标签：git tag</p>
+<p>查看当个标签的内容： git show 标签名</p>
+<h4 id="删标签">删标签</h4>
+<p>如果打错标签可以删除 git tag -d 标签名</p>
+<h2 id="三多分支版本管理">三、多分支版本管理</h2>
+<h4 id="分支的增删查并">分支的增删查并</h4>
+<p>查看分支： git branch</p>
+<p>创建分支:	git branch 问文件名</p>
+<p>切换分支： git switch &lt;分支名&gt;  或 git checkout -b 分支名</p>
+<p>​					创建+切换：git checkout -b 文件名，或 git switch -c &lt;分支名&gt;</p>
+<p>合并分支： git merge &lt;分支名&gt;, 一般是 先跳到主分支上，然后合并另一个分支</p>
+<p>​					git 合并时，会用Fast forward 模式，但这种模式下，删除分治后，会丢掉分支信息</p>
+<p>​					&ndash;no-ff，参数，就会禁止用Fast forward模式，merge时会生成一个新的commit，从分支历史上可以看出分支信息</p>
+<p>删除分支	git branch -d &lt;分支名&gt;</p>
+<p>​					没有被合并过的分支是删除不了的，用：git branch -D 分支名强行删除</p>
+<p>查看分支历史：<code>git log --graph --pretty=oneline --abbrev-commit</code></p>
+<h4 id="分支管理一般策略">分支管理一般策略</h4>
+<p>master是不能动，dev分支用来合并，个人分支来修改实际内容</p>
+<h4 id="bug分支与cherry-pick">bug分支与cherry-pick</h4>
+<p>1、有bug的时候，我们会在master 下面开一条分支</p>
+<p>​	新建、切换分支： git checkout -b issue-101(bug名)</p>
+<p>​	修改完：git add 文件名</p>
+<p>​	提交版本：git commit -m &ldquo;issue-101&rdquo;</p>
+<p>在处理完bug之后，就会将这条分支合并到master，且删掉。</p>
+<p>​	切换回master：git switch master</p>
+<p>​	合并： git merge &ndash;no-ff -m &ldquo;merge bug fix 101&rdquo; issue-101（分支名）</p>
+<p>这个时候再到dev分支的时候，不需要重新再做一次bug修改</p>
+<p>只需将master 保存的 commit it 提取过即可。</p>
+<p>​	git cheery-pick comm_it（前面提交issu的commit）</p>
+<h2 id="四暂存管理">四、暂存管理</h2>
+<p>一次版本的提交，是一次完整的修改。</p>
+<p>如果临时有bug需要紧急处理，但是手头工作还没做完，怎么办？</p>
+<p>先将暂存区的内容进行保存</p>
+<h4 id="查看保存的暂存区内容">查看保存的暂存区内容</h4>
+<p>​	git stash list</p>
+<h4 id="保存暂存区">保存暂存区</h4>
+<p>​	git stash 将暂存区的内容进行保存。每一次的git stash是一次压栈。可以保存多次的暂存区的内容。</p>
+<h4 id="提取暂存区">提取暂存区</h4>
+<p>​	git stash pop 恢复并删除</p>
+<p>​	git stash apply 恢复，然后 git stash drop 删除</p>
+<h2 id="五-同步远程库">五 、同步远程库</h2>
+<h4 id="远程账号设置">远程账号设置</h4>
+<p>1	生成ssh key： ssh-keygen -t rsa -C “你的邮箱@youxiang.com&quot;</p>
+<p>2	在.ssh目录下，找到id_rsa.pub(公钥)，上传到 ssh key里</p>
+<h4 id="远程创建空库">远程创建空库</h4>
+<p>Create a new repo</p>
+<h4 id="链接本地远程库">链接本地远程库</h4>
+<p>git remote add origin <a href="mailto:git@github.com" rel="">git@github.com</a>:i你的名字/你创建的库.git</p>
+<p>origin: 就代表远程的库，这个名字可以自定义；origin 是约定俗称的。</p>
+<p>建立远程的分支链接：</p>
+<p>​	git checkout -b dev origin/dev</p>
+<h4 id="上传本地库">上传本地库</h4>
+<p>将本地master分支推送到远程库 <code>git push -u origin master</code></p>
+<p>-u参数不但将本地master分支推送到远程master，并且建立了联系</p>
+<p>普通修改，普通推送：git push origin master</p>
+<p>上传分支： git push origin dev</p>
+<h4 id="上传合并本地库到远程">上传合并本地库到远程</h4>
+<h4 id="下载远程库">下载远程库</h4>
+<p>先有远程库 git clone <a href="mailto:git@github.com" rel="">git@github.com</a>:你的名字/你的库.git</p>
+<h4 id="下载合并远程库到本地">下载合并远程库到本地</h4>
+<p>抓取远程分支：git pull</p>
+<p>当有人已经先提交了 分支时，此时 git pull 就会出错(提示：no tracking information)，需要先建立链接</p>
+<p>​	git branch &ndash;set-upstream-to=origin/dev</p>
+<p>建立链接，再 git pull 时，就会成功，并且会提示有冲突，此时手动合并后，再提交</p>
+<p>​	<code>git push origin dev</code></p>
+<h4 id="查看本地链接的远程库">查看本地链接的远程库</h4>
+<p>查看本地对应链接远程库的名字：git remote</p>
+<p>查看链接库的名字：git remote -v</p>
+<h4 id="删除本地连接的远程库">删除本地连接的远程库</h4>
+<p>git remote rm origin</p>
+<h2 id="六其他">六、其他</h2>
+<h4 id="git-rebase">git rebase</h4>
+<p>将分支都直线化</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-05-11</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://bingyan.wang/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" data-title="Git简明教程"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://bingyan.wang/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" data-title="Git简明教程" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://bingyan.wang/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" data-title="Git简明教程" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://bingyan.wang/git%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" data-title="Git简明教程"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/first_post/" class="prev" rel="prev" title="First_post"><i class="fas fa-angle-left fa-fw"></i>First_post</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.97.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
